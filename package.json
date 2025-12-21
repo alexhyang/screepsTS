@@ -17,7 +17,12 @@
     "watch-main": "rollup -cw --environment DEST:main",
     "watch-pserver": "rollup -cw --environment DEST:pserver",
     "watch-season": "rollup -cw --environment DEST:season",
-    "watch-sim": "rollup -cw --environment DEST:sim"
+    "watch-sim": "rollup -cw --environment DEST:sim",
+    "link:check": "eslint src test --ext .ts",
+    "link:fix": "eslint src test --ext .ts --fix",
+    "prettier:check": "prettier src/**/*.ts test/**/*.ts --check",
+    "prettier:fix": "prettier src/**/*.ts test/**/*.ts --write",
+    "start": "ts-node src/main.js"
   },
   "repository": {
     "type": "git",
@@ -48,7 +53,7 @@
     "eslint-plugin-import": "^2.24.0",
     "lodash": "^3.10.1",
     "mocha": "^5.2.0",
-    "prettier": "^2.7.1",
+    "prettier": "^3.7.4",
     "rollup": "^2.56.2",
     "rollup-plugin-clear": "^2.0.7",
     "rollup-plugin-screeps": "^1.0.1",

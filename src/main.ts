@@ -1,3 +1,5 @@
+import JobManager from "squad/JobManager";
+import * as Recruiter from "squad/Recruiter";
 import { ErrorMapper } from "utils/ErrorMapper";
 
 declare global {
@@ -13,15 +15,27 @@ declare global {
   interface Memory {
     uuid: number;
     log: any;
+    debugCountdown: number;
   }
 
   interface CreepMemory {
     role: string;
-    room: string;
-    working: boolean;
+    roomName: string;
+    working?: boolean;
+    upgrading?: boolean;
+    delivering?: boolean;
+    srcIndex?: number;
+    resourceTypes?: ResourceConstant[];
   }
 
+  interface RoomMemory {
+    defenses: {
+      defenseHitsTarget: number
+    }
+  }
 }
+
+
 // Syntax for adding proprties to `global` (ex "global.log")
 declare const global: {
   log: any;
@@ -38,4 +52,9 @@ export const loop = ErrorMapper.wrapLoop(() => {
       delete Memory.creeps[name];
     }
   }
+
+  Recruiter.run();
+  JobManager.assignJobs();
+
+  console.log("\n");
 });

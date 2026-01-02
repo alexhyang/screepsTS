@@ -1,6 +1,5 @@
-import RoomAPI from "room/RoomAPI";
+import RoomAPI, { MyRoomName } from "room/RoomAPI";
 import { Role } from "./role/interfaces";
-import * as Roles from "./role/interfaces";
 
 export default class Squad {
   /**

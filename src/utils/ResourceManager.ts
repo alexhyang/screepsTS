@@ -1,4 +1,4 @@
-import RoomAPI from "room/RoomAPI";
+import RoomAPI, { MyRoomName } from "room/RoomAPI";
 import { HasStore } from "./interfaces";
 import * as StructureFinder from "structure/StructureFinder";
 

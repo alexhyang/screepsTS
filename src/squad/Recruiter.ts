@@ -1,6 +1,6 @@
 import CreepModelAnalyzer from "creep/CreepModelAnalyzer";
 import MODELS from "creep/CreepModels";
-import RoomAPI from "room/RoomAPI";
+import RoomAPI, { MyRoomName } from "room/RoomAPI";
 import Squad from "./Squad";
 import { getEnergyAvailable } from "utils/ResourceManager";
 import { CreepModel } from "creep/interfaces";
@@ -228,7 +228,7 @@ function shouldRecruitUpgraders(room: Room, roomConfig: RoomConfig): boolean {
 function recruitUpgraders(room: Room, currentModel: CreepModel): boolean {
   const controller = StructureFinder.getController(room);
   const model = controller !== undefined && controller.level === 8 ? MODELS.WORKER_3 : currentModel;
-  return recruitFromModels(room, RESEARCHER, [model]);
+  return recruitFromModels(room, RESEARCHER, [model, MODELS.WORKER_1B]);
 }
 
 /**
@@ -249,7 +249,7 @@ function shouldRecruitRepairers(room: Room, roomConfig: RoomConfig): boolean {
  * @returns  true if the recruit is successful, false otherwise
  */
 function recruitRepairers(room: Room, currentModel: CreepModel): boolean {
-  return recruitFromModels(room, ENGINEER, [currentModel]);
+  return recruitFromModels(room, ENGINEER, [currentModel, MODELS.WORKER_1B]);
 }
 
 /**
